@@ -8,24 +8,29 @@ def generate_dip_switch_combinations():
 def create_flipper_subghz_files(combinations, base_file_data, output_directory):
     for combo in combinations:
         key_hex = f"{int(combo, 2):08X}"  # Convert binary string to 8-digit hexadecimal
-        key_formatted = "00 00 00 00 00 00 " + " ".join([key_hex[i:i+2] for i in range(0, len(key_hex), 2)])
+        key_formatted = "00 00 00 00 " + " ".join([key_hex[i:i+2] for i in range(0, len(key_hex), 2)])
+        print(key_formatted)
         file_name = f"{output_directory}/combo_{combo}.sub"
         
         with open(file_name, 'w') as file:
             for line in base_file_data:
+    
                 if 'Key: ' in line:
-                    file.write(f"Key: {key_formatted}\n")
+                    file.write(f"Key: {key_formatted}")
                 else:
+                    
                     file.write(line)
+                #write new line
+                file.write('\n')
 
 # Sample base file data to replicate the structure
 base_file_data = [
-    "Filetype: Flipper SubGhz Key File\n",
-    "Version: 1\n",
-    "Frequency: 300000000\n",
-    "Preset: FuriHalSubGhzPresetOok650Async\n",
-    "Protocol: Linear\n",
-    "Bit: 10\n"
+    "Filetype: Flipper SubGhz Key File",
+    "Version: 1",
+    "Frequency: 300000000",
+    "Preset: FuriHalSubGhzPresetOok650Async",
+    "Protocol: Linear",
+    "Bit: 10",
     "Key: "
 ]
 

@@ -3,4 +3,5 @@ Version: 1
 Frequency: 300000000
 Preset: FuriHalSubGhzPresetOok650Async
 Protocol: Linear
-Key: 00 00 00 00 00 00 00 00 01 90
+Bit: 10
+Key: 00 00 00 00 00 00 01 90
